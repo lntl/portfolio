@@ -1,41 +1,42 @@
-//NEED
-/*
-create_element(option simple) {
-	html : "string html **required",
-	id : "string multiple with space",
-	class : "string multiple with space",
-	text : "string without html",
-	//optional if list node like ul/li **required
-	list : {
-			html: "string html **required",
-			text: ["string"],
-			class_list: "maclasseliste",
-	}
+const all_pages = {
+  home : "pages/home",
+  contact : "pages/contact"
 }
-*/
 
-var routes = {
-	home : function(){
-		//CONSTRUCTION DE LA HOME
-		var title = {
-			html : "h1",
-			typeof : "string",
-			text : "lucas natale",
-			class : "toto",
-			id : "titre",
-		}
-		var nav = {
-			html : "ul",
-			typeof: "list",
-			id : "e",
-			class: "maclass test",
-			list: {
-				html: "li",
-				text: ["test","test2"],
-				class_list: "maclasseliste",
-			},
-		}
-		compiler.create_element(title);
-		compiler.create_element(nav);
-	},
+var getUrl = getQueryParams(location.search);
+
+if(getUrl) {
+  //AJOUT DES MODULES DE PAGE DYNAMIQUE
+  for (let [key, value] of Object.entries(getUrl)) {
+    switch (key) {
+      case 'page':
+        getRoutesExist(value);
+      break;
+    }
+  }
 }
+function getRoutesExist(arg){
+  for (let [key, value] of Object.entries(all_pages))  {
+    if(key===arg){
+      getScript(all_pages[key]+'.js');
+    }
+  }
+}
+
+function getQueryParams(qs) {
+  qs = qs.split('+').join(' ');
+	var params = {},
+			tokens,
+			re = /[?&]?([^=]+)=([^&]*)/g;
+	while (tokens = re.exec(qs)) {
+			params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+	}
+	return params;
+}
+function getScript(url){
+	var x = document.createElement('script');
+	x.src = url;
+	return document.getElementsByTagName("head")[0].appendChild(x);
+}
+// var newUrl = ""
+// console.log(location.searchParams.get("test"));
