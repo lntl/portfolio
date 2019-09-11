@@ -4,8 +4,8 @@ const all_pages = {
 }
 
 var getUrl = getQueryParams(location.search);
-
-if(getUrl) {
+console.log(Object.entries(getUrl).length);
+if(Object.entries(getUrl).length>0) {
   //AJOUT DES MODULES DE PAGE DYNAMIQUE
   for (let [key, value] of Object.entries(getUrl)) {
     switch (key) {
@@ -14,7 +14,11 @@ if(getUrl) {
       break;
     }
   }
+} else {
+  console.log('test')
+  getRoutesExist("home");
 }
+
 function getRoutesExist(arg){
   for (let [key, value] of Object.entries(all_pages))  {
     if(key===arg){
@@ -33,6 +37,7 @@ function getQueryParams(qs) {
 	}
 	return params;
 }
+
 function getScript(url){
 	var x = document.createElement('script');
 	x.src = url;

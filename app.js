@@ -2,6 +2,7 @@
 app = {
 	start : function() {
 		getScript('https://code.jquery.com/jquery-3.4.1.min.js');
+
 		var page = getUrl.page;
 		if(page){home.onload()}
 

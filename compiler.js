@@ -51,6 +51,10 @@ var compiler = {
 					node.href = value;
 					if(element.target){ node.target = element.target;}
 				break;
+				case 'src':
+					node.src = value;
+					if(element.target){ node.target = element.target;}
+				break;
 				default:
 			}
 		}
