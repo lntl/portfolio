@@ -2,9 +2,14 @@ const all_pages = {
   home : "pages/home",
   contact : "pages/contact"
 }
+var page = {
+  onload : function(){
+
+  }
+}
 
 var getUrl = getQueryParams(location.search);
-console.log(Object.entries(getUrl).length);
+
 if(Object.entries(getUrl).length>0) {
   //AJOUT DES MODULES DE PAGE DYNAMIQUE
   for (let [key, value] of Object.entries(getUrl)) {
@@ -15,14 +20,15 @@ if(Object.entries(getUrl).length>0) {
     }
   }
 } else {
-  console.log('test')
-  getRoutesExist("home");
+  getScript(all_pages.home+'.js');
 }
 
 function getRoutesExist(arg){
   for (let [key, value] of Object.entries(all_pages))  {
     if(key===arg){
       getScript(all_pages[key]+'.js');
+    } else {
+      console.log('tedazdsttt')
     }
   }
 }
@@ -43,5 +49,3 @@ function getScript(url){
 	x.src = url;
 	return document.getElementsByTagName("head")[0].appendChild(x);
 }
-// var newUrl = ""
-// console.log(location.searchParams.get("test"));

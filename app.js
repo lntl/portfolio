@@ -2,9 +2,7 @@
 app = {
 	start : function() {
 		getScript('https://code.jquery.com/jquery-3.4.1.min.js');
-
-		var page = getUrl.page;
-		if(page){home.onload()}
+		page.onload();
 
 		// var test = compiler.load_page("pages/home.js");
 		// console.log(test);

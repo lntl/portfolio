@@ -3,9 +3,14 @@ var page = {
     var title = {
 			html : "h1",
 			typeof : "string",
-			text : "Accueil",
+			text : "Contact",
 			class : "toto",
 			id : "titre",
+    }
+    var title2 = {
+			html : "h2",
+			typeof : "string",
+			text : "Titre 2",
 		}
 		var nav = {
 			html : "ul",
@@ -21,9 +26,8 @@ var page = {
 		var link = {
 			html : "a",
 			typeof : "string",
-			// target : "_blank",
-			text : "Page contact",
-			href : "?page=contact",
+			text : "Page accueil",
+			href : "?page=home",
 			id : "mylink",
 		}
 		var img = {
@@ -32,10 +36,12 @@ var page = {
 			src : "https://img.lemde.fr/2019/04/22/0/191/1619/1079/688/0/60/0/e39da8d_2FIads9h8wB-0SwSgxVaVWsp.jpg",
 			id : "mylink",
     }
-		compiler.create_element(title);
+    compiler.create_element(title);
+    compiler.create_element(title2);
 		compiler.create_element(nav);
     compiler.create_element(link);
-		compiler.create_element(img);
+    compiler.create_element(img);
+
   }
 }
 
